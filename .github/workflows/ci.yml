@@ -20,16 +20,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run install-all.sh
-      run: bash bin/installers/install-all.sh 
-    - name: Check the tools has been successfully installed
-      run: |
-        brew --version
-        node --version
-        npm --version
-        java --version
-        erl -version
-        elixir --version
+    - name: Deploy!
+      run: bash bin/deploy.sh
+    - name: Check!
+      run: ls -alhF --time-style=long-iso --color=always
   macOS:
     name: Run on macOS 10.15 (Catalina)
     runs-on:  macos-10.15
@@ -37,12 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run install-all.sh
-      run: bash bin/installers/install-all.sh 
-    - name: Check the tools has been successfully installed
-      run: |
-        brew --version
-        node --version
-        npm --version
-        erl -version
-        elixir --version
+    - name: Deploy!
+      run: bash bin/installers/deploy.sh 
+    - name: Check!
+      run: ls -alhF --time-style=long-iso --color=always
