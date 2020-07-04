@@ -34,4 +34,4 @@ jobs:
     - name: Deploy!
       run: bash bin/deploy.sh 
     - name: Check!
-      run: ls -alhF --time-style=long-iso --color=always
+      run: ls -alhF
