@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Run on Ubuntu 20.04
+  ubuntu:
+    name: Run on Ubuntu 20.04 (Focal Fossa)
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run install-all.sh
+      run: bash bin/installers/install-all.sh 
+    - name: Check the tools has been successfully installed
+  macOS:
+    name: Run on macOS 10.15 (Catalina)
+    runs-on:  macos-10.15
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run install-all.sh
+      run: bash bin/installers/install-all.sh 
+    - name: Check the tools has been successfully installed
