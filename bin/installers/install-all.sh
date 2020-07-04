@@ -11,6 +11,7 @@ else echo "macOSかLinuxで実行してね."
 fi
 
 . ./homebrew.sh
+. ./asdf.sh
 
 for f in ./asdf/*.sh; do . $f; done
 
