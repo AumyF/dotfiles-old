@@ -23,7 +23,7 @@ jobs:
     - name: Deploy!
       run: bash bin/deploy.sh
     - name: Check!
-      run: ls -alhF --time-style=long-iso --color=always
+      run: ls -alhF --time-style=long-iso --color=always ~
   macOS:
     name: Run on macOS 10.15 (Catalina)
     runs-on:  macos-10.15
@@ -34,4 +34,4 @@ jobs:
     - name: Deploy!
       run: bash bin/deploy.sh 
     - name: Check!
-      run: ls -alhF
+      run: ls -alhF ~
