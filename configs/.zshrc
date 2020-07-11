@@ -8,7 +8,11 @@ alias tree="exa --tree --classify --long --level 1 --time-style long-iso --git -
 chpwd() { tree }
 
 # brewのパスを通す
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+if [ "$(uname)" = "Linux" ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 
 # asdfのPATH
 PATH="$HOME/.asdf/shims:$PATH"
