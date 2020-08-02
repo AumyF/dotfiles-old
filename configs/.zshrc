@@ -8,7 +8,11 @@ alias tree="exa --tree --classify --long --level 1 --time-style long-iso --git -
 chpwd() { tree }
 
 # brewのパスを通す
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+if [ "$(uname)" = "Linux" ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 
 # これがないとasdf helpが動かない https://github.com/asdf-vm/asdf/issues/607
 . $(brew --prefix asdf)/asdf.sh
