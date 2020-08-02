@@ -10,8 +10,8 @@ chpwd() { tree }
 # brewのパスを通す
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# asdfのPATH
-PATH="$HOME/.asdf/shims:$PATH"
+# これがないとasdf helpが動かない https://github.com/asdf-vm/asdf/issues/607
+. $(brew --prefix asdf)/asdf.sh
 
 # asdfの補完 
 fpath=(
