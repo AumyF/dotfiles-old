@@ -8,6 +8,7 @@ alias tree="exa --tree --classify --long --level 1 --time-style long-iso --git -
 alias pwsh="pwsh.exe"
 alias cmd="cmd.exe"
 alias wsl="wsl.exe"
+alias clip="clip.exe"
 
 # cd後にツリー表示
 chpwd() { tree }
