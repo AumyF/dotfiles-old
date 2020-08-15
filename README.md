@@ -4,7 +4,7 @@
 
 - `bin` スクリプトが入ってるよ。
   - `deploy` デプロイ、要するにシンボリックリンクを貼るよ。
-  - `installers` Homebrewとかのインストールをやるよ。
+  - `installers` Homebrew とかのインストールをやるよ。
 - `configs` 本体だよ。設定ファイルが入ってるよ。わざわざ分離するなんて潔癖症だね。
-  - `.Brewfile` Homebrewで入れるソフトの一覧だよ。
-  - `.zshrc` zshの設定だよ。
+  - `.Brewfile` Homebrew で入れるソフトの一覧だよ。
+  - `.zshrc` zsh の設定だよ。

@@ -1,0 +1,1 @@
+brewprefix="$(brew --prefix)"
