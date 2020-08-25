@@ -55,13 +55,16 @@ function cargo_path () {
   PATH=$HOME/.cargo/bin:$PATH
 }
 
-function rustup_completion () {
-  eval "$(rustup completions zsh)"
+function add_completions () {
+  fpath=(
+    $HOME/.zfunc
+    $fpath
+  )
 }
 
 function cargo_completion () {
   fpath=(
-    .rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/zsh/site-functions/_cargo
+    $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/zsh/site-functions/_cargo
     $fpath
   )
 }
@@ -119,7 +122,7 @@ asdf_init
 cargo_path
 brew_completion
 github_completion
-# rustup_completion
+add_completions
 cargo_completion
 asdf_completion
 
