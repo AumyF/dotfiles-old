@@ -6,54 +6,41 @@
 # ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 
-function launch_starship () {
-  eval "$(starship init zsh)"
-}
+# Alias which shows pretty directory tree
+alias tree="exa --tree --classify --long --level 1 --time-style long-iso --git --header"
 
-function add_aliases() {
-  # ツリー表示
-  alias tree="exa --tree --classify --long --level 1 --time-style long-iso --git --header"
+# Aliasses for WSL environments
+alias pwsh="pwsh.exe"
+alias cmd="cmd.exe"
+alias wsl="wsl.exe"
+alias clip="clip.exe"
+alias open="pwsh.exe /c start" # Open url in default browser of Windows host
 
-  # Windowsのエイリアス
-  alias pwsh="pwsh.exe"
-  alias cmd="cmd.exe"
-  alias wsl="wsl.exe"
-  alias clip="clip.exe"
-  alias rel="source ~/.zshrc"
-  
-}
+# Make `asdf help` working https://github.com/asdf-vm/asdf/issues/607
+# . $brewprefix/opt/asdf/asdf.sh
 
-# brewの補完
-function brew_completion() {
-  if type brew &>/dev/null; then
-    FPATH=${brewprefix}/share/zsh/site-functions:$FPATH
+# Change directory without `cd`
+setopt auto_cd
+HISTFILE=~/.zsh-history
+HISTSIZE=10000
+SAVEHIST=10000
+# Don't save same command as recent to history
+setopt hist_ignore_dups
+# Share history across windows
+setopt share_history
+# Save blanks-reduced commandline
+setopt hist_reduce_blanks
+setopt inc_append_history
 
-    autoload -Uz compinit
-    compinit
-  fi
-}
+# Show directory tree after cd
+chpwd() { tree }
 
-function github_completion() {
-  # GitHub CLIの補完
-  eval "$(gh completion -s zsh)"
-}
+# Show directory tree after starting shell
+tree
 
-function asdf_init () {
-  # これがないとasdf helpが動かない https://github.com/asdf-vm/asdf/issues/607
-  . $(brew --prefix asdf)/asdf.sh
-}
+# Cargo path
+PATH=$HOME/.cargo/bin:$PATH
 
-function asdf_completion() {
-  # asdfの補完
-  fpath=(
-    $(brew --prefix asdf)/etc/bash_completion.d
-    $fpath
-  )
-}
-
-function cargo_path () {
-  PATH=$HOME/.cargo/bin:$PATH
-}
 
 function add_completions () {
   fpath=(
@@ -62,23 +49,7 @@ function add_completions () {
   )
 }
 
-function cargo_completion () {
-  fpath=(
-    $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/zsh/site-functions/_cargo
-    $fpath
-  )
-}
 
-function set_options () {
-  setopt auto_cd # cd省略
-  HISTFILE=~/.zsh-history
-  HISTSIZE=10000
-  SAVEHIST=10000
-  setopt hist_ignore_dups # 直前と同じコマンドは履歴に入れない
-  setopt share_history # 履歴を共有
-  setopt hist_reduce_blanks # 余分な空白を削って履歴に記録
-  setopt inc_append_history
-}
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -97,7 +68,6 @@ autoload -Uz _zinit
 
 ######################################################
 
-# brewprefix=$(brew --prefix)
 
 if [ "$(uname)" = "Linux" ]; then
   source ${HOME}/.zshrc-linux.sh
@@ -107,24 +77,26 @@ if [ "$(uname)" = "Darwin" ]; then
   source ${HOME}/.zshrc-mac.sh
 fi
 
+brewprefix=$(brew --prefix)
 
-set_options
-add_aliases
+# Launch starship
+eval "$(starship init zsh)"
 
-# cd後にツリー表示
-chpwd() { tree }
-tree
+# Completion of GitHub CLI
+eval "$(gh completion -s zsh)"
 
-launch_starship
 
-asdf_init
 
-cargo_path
-brew_completion
-github_completion
+
+
+if type brew &>/dev/null; then
+  FPATH=${brewprefix}/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+  
 add_completions
-cargo_completion
-asdf_completion
 
 # zinit
 
@@ -142,3 +114,5 @@ zinit load zsh-users/zsh-completions
 
 # 補完
 autoload -Uz compinit && compinit
+
+if [ -e /home/u/.nix-profile/etc/profile.d/nix.sh ]; then . /home/u/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
