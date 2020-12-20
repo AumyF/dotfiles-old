@@ -1,13 +1,14 @@
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .github
+EXCLUSIONS := .DS_Store .git .gitmodules .github .config
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+DOTCONFIG := $(wildcard .config/*)
 UNAME_S := $(shell uname -s)
 
 deploy:
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@$(foreach val, $(DOTFILES) $(DOTCONFIG), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 list:
-	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
+	@$(foreach val, $(DOTFILES) $(DOTCONFIG), /bin/ls -dF $(val);)
 
 init:
 ifeq ($(UNAME_S),Linux)

@@ -16,6 +16,9 @@ alias wsl="wsl.exe"
 alias clip="clip.exe"
 alias open="pwsh.exe /c start" # Open url in default browser of Windows host
 
+# added by Nix installer
+if [ -e /home/u/.nix-profile/etc/profile.d/nix.sh ]; then . /home/u/.nix-profile/etc/profile.d/nix.sh; fi 
+
 # Make `asdf help` working https://github.com/asdf-vm/asdf/issues/607
 # . $brewprefix/opt/asdf/asdf.sh
 
@@ -34,9 +37,6 @@ setopt inc_append_history
 
 # Show directory tree after cd
 chpwd() { tree }
-
-# Show directory tree after starting shell
-tree
 
 # Cargo path
 PATH=$HOME/.cargo/bin:$PATH
@@ -79,6 +79,9 @@ fi
 
 brewprefix=$(brew --prefix)
 
+# Show directory tree after starting shell
+tree
+
 # Launch starship
 eval "$(starship init zsh)"
 
@@ -115,4 +118,3 @@ zinit load zsh-users/zsh-completions
 # 補完
 autoload -Uz compinit && compinit
 
-if [ -e /home/u/.nix-profile/etc/profile.d/nix.sh ]; then . /home/u/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -1,0 +1,50 @@
+
+format = """
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$dotnet\
+$elixir\
+$elm\
+$golang\
+$nim\
+$nodejs\
+$ocaml\
+$purescript\
+$python\
+$ruby\
+$rust\
+$zig\
+$nix_shell\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$line_break\
+$time\
+$jobs\
+$battery\
+$status\
+$character"""
+
+[time]
+disabled = false
+# format = '🕓[\[ $time \]]($style) '
+# time_format = "%T"
+utc_time_offset = "+9" # UTC+9: JST (Tokyo, Japan)
+
+[status]
+disabled = false
