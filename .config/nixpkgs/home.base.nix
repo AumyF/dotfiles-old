@@ -37,7 +37,6 @@
     scala
     silicon
     skim
-    vim
     zoxide
   ];
 
@@ -46,6 +45,25 @@
     userName = "Aumy";
     userEmail = "46275902+AumyF@users.noreply.github.com";
   };
+
+  programs.vim = {
+    enable = true;
+    settings = {
+      expandtab = true;
+      history = 100;
+      number = true;
+      tabstop = 2;
+    };
+    extraConfig = ''
+      set encoding=utf-8
+      scriptencoding utf-8
+      set autoindent
+      set smartindent
+      
+      set cursorline
+    '';
+  };
+
   programs.lsd = {
     enable = true;
   };
