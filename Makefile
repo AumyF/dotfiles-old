@@ -7,6 +7,13 @@ UNAME_S := $(shell uname -s)
 deploy:
 	@$(foreach val, $(DOTFILES) $(DOTCONFIG), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
+deploy_nix:
+	@ln -sfnv $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
+
+
+list_nix:
+	@echo $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
+
 list:
 	@$(foreach val, $(DOTFILES) $(DOTCONFIG), /bin/ls -dF $(val);)
 
