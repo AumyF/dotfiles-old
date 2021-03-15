@@ -13,19 +13,31 @@
 
   home.packages = with pkgs; [
     bat
+    cachix
+    deno
     dogdns
-    dust
+    dotnet-sdk_5
+    du-dust
     fd
     gh
+    ghc
     git
+    go
+    haskell-language-server
     hexyl
     jq
+    niv
     nix-prefetch-github
+    openjdk
     procs
     pueue
     ripgrep
+    ruby
+    sbt
+    scala
     silicon
     skim
+    vim
     zoxide
   ];
 
