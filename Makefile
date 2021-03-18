@@ -1,30 +1,11 @@
-CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .github .config
-DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-DOTCONFIG := $(wildcard .config/*)
-UNAME_S := $(shell uname -s)
-
-deploy:
-	@$(foreach val, $(DOTFILES) $(DOTCONFIG), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-
-deploy_nix:
+link_nix:
 	@ln -sfnv $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
 
-
-list_nix:
+dry_link_nix:
 	@echo $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
 
-list:
-	@$(foreach val, $(DOTFILES) $(DOTCONFIG), /bin/ls -dF $(val);)
-
-init:
-ifeq ($(UNAME_S),Linux)
-	@$(foreach val, etc/install/*.linux.sh, sh $(val))
-else
-	@$(info $(UNAME_S))
-endif
-
-init_list:
-ifeq ($(UNAME_S), Linux)
-	@$(foreach val, etc/install/*.linux.sh, echo $(val))
-endif
+init_ubuntu:
+	sudo sed -i.bak -e 's%http://[^ ]\+%mirror://mirrors.ubuntu.com/mirrors.txt%g' /etc/apt/sources.list
+	sudo apt-get update && sudo apt-get upgrade -y
+	sudo apt-get install zsh
+	chsh -s $(which zsh)

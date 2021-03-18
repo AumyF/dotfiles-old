@@ -28,10 +28,12 @@
     jq
     niv
     nix-prefetch-github
+    nodejs-15_x
     openjdk
     procs
     pueue
     ripgrep
+    rnix-lsp
     ruby
     sbt
     scala
@@ -45,7 +47,6 @@
     userName = "Aumy";
     userEmail = "46275902+AumyF@users.noreply.github.com";
   };
-
   programs.vim = {
     enable = true;
     settings = {
