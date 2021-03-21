@@ -89,12 +89,12 @@
     enableAutosuggestions = true;
     shellAliases =
       {
-        list = "lsd -F -l --blocks permission,user,group,size,inode,date,name --date \"+%F %T UTC%z\"";
+        list = "lsd -F -l --blocks permission,user,group,size,date,name --date \"+%F %T UTC%z\"";
       };
     initExtra = ''
       if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
-      lsd -F -l --blocks permission,user,group,size,inode,date,name --date "+%F %T UTC%z"
-      chpwd() { lsd -F -l --blocks permission,user,group,size,inode,date,name --date "+%F %T UTC%z" }
+      lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z"
+      chpwd() { lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z" }
     '';
     plugins = [
       {
