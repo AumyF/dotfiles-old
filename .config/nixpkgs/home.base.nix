@@ -14,29 +14,20 @@
   home.packages = with pkgs; [
     bat
     cachix
-    deno
     dogdns
-    dotnet-sdk_5
     du-dust
     fd
     gh
-    ghc
     git
-    go
-    haskell-language-server
     hexyl
     jq
     niv
     nix-prefetch-github
     nodejs-15_x
-    openjdk
     procs
     pueue
     ripgrep
     rnix-lsp
-    ruby
-    sbt
-    scala
     silicon
     skim
     zoxide
@@ -46,6 +37,20 @@
     enable = true;
     userName = "Aumy";
     userEmail = "46275902+AumyF@users.noreply.github.com";
+  };
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      coc-nvim
+    ];
+    extraConfig = ''
+      set encoding=utf-8
+      set autoindent
+      set smartindent
+      set number
+      set expandtab
+      set tabstop=2
+    '';
   };
   programs.vim = {
     enable = true;
