@@ -95,6 +95,7 @@
     shellAliases =
       {
         list = "lsd -F -l --blocks permission,user,group,size,date,name --date \"+%F %T UTC%z\"";
+        apt-bump = "sudo apt-get update && sudo apt-get upgrade -y";
       };
     initExtra = ''
       if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
