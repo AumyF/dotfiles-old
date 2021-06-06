@@ -23,7 +23,7 @@
     jq
     niv
     nix-prefetch-github
-    nodejs-15_x
+    nodejs-16_x
     procs
     pueue
     ripgrep
