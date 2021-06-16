@@ -30,7 +30,6 @@
     rnix-lsp
     silicon
     skim
-    zoxide
   ];
 
   programs.git = {
@@ -130,7 +129,12 @@
   programs.direnv = {
     enable = true;
     enableNixDirenvIntegration = true;
-
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };        
 
 }
