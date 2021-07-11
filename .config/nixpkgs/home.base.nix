@@ -98,8 +98,17 @@
         apt-bump = "sudo apt-get update && sudo apt-get upgrade -y";
         yarn = "nix run nixpkgs.yarn -c yarn";
       };
+    envExtra = ''
+      if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+        source $HOME/.nix-profile/etc/profile.d/nix.sh
+        export fpath=(
+          $HOME/.nix-profile/share/zsh/vendor-completions
+          $HOME/.nix-profile/share/zsh/site-functions
+          $fpath
+        )
+      fi
+    '';
     initExtra = ''
-      if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
       lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z"
       chpwd() { lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z" }
     '';
@@ -131,7 +140,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv = {
-        enable = true;
+      enable = true;
     };
   };
 
@@ -139,6 +148,6 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-  };        
+  };
 
 }
