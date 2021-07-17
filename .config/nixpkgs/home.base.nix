@@ -137,6 +137,11 @@
     ];
   };
 
+  programs.nushell = {
+    enable = true;
+    settings = {};
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv = {
