@@ -139,7 +139,11 @@
 
   programs.nushell = {
     enable = true;
-    settings = {};
+    settings = {
+      pivot_mode = "always";
+      table_mode = "light";
+      prompt = "starship prompt";
+    };
   };
 
   programs.direnv = {
