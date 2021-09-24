@@ -1,5 +1,6 @@
 link_nix:
 	@ln -sfnv $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
+	@ln -sfnv $(abspath ".config/nix/nix.conf") $(HOME)/.config/nix/nix.conf
 
 dry_link_nix:
 	@echo $(abspath ".config/nixpkgs/home.base.nix") $(HOME)/.config/nixpkgs/home.base.nix
