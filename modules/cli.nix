@@ -20,6 +20,7 @@
     enable = true;
     nix-direnv = {
       enable = true;
+      enableFlake = true;
     };
   };
 
