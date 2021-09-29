@@ -39,13 +39,17 @@
               cachix
               gh
               ghq
-              git
               niv
               nix-prefetch-github
               nodejs-16_x
               rnix-lsp
             ];
             programs.home-manager.enable = true;
+            programs.git = {
+              enable = true;
+              userName = "Aumy";
+              userEmail = "46275902+AumyF@users.noreply.github.com";
+            };
 
           };
           system = "x86_64-linux";
