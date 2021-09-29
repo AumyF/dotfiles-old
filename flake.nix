@@ -25,35 +25,39 @@
     ];
   in
     {
-      homeConfigurations = {
-        wsl =
-          home-manager.lib.homeManagerConfiguration {
-            configuration = { pkgs, config, ... }: {
-              nixpkgs = {
-                overlays = overlays;
-              };
-              imports = [
-                ./modules/cli.nix
-                ./modules/shells.nix
-              ];
-              home.packages = with pkgs;[
-                cachix
-                gh
-                ghq
-                git
-                niv
-                nix-prefetch-github
-                nodejs-16_x
-                rnix-lsp
-              ];
-              programs.home-manager.enable = true;
-
+      homeConfigurations = let
+        wsl = username: home-manager.lib.homeManagerConfiguration {
+          configuration = { pkgs, config, ... }: {
+            nixpkgs = {
+              overlays = overlays;
             };
-            system = "x86_64-linux";
-            username = "user";
-            homeDirectory = "/home/user";
+            imports = [
+              ./modules/cli.nix
+              ./modules/shells.nix
+            ];
+            home.packages = with pkgs;[
+              cachix
+              gh
+              ghq
+              git
+              niv
+              nix-prefetch-github
+              nodejs-16_x
+              rnix-lsp
+            ];
+            programs.home-manager.enable = true;
+
           };
-      };
-      wsl = self.homeConfigurations.wsl.activationPackage;
+          system = "x86_64-linux";
+          username = username;
+          homeDirectory = "/home/${username}";
+        };
+      in
+        {
+          wsl-shiyuki = wsl "user";
+          wsl-chiaki = wsl "u";
+        };
+      wsl-shiyuki = self.homeConfigurations.wsl-shiyuki.activationPackage;
+      wsl-chiaki = self.homeConfigurations.wsl-chiaki.activationPackage;
     };
 }
