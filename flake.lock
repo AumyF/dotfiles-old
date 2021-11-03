@@ -15,23 +15,6 @@
         "type": "github"
       }
     },
-    "history-search-multi-word": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1579234154,
-        "narHash": "sha256-hycNdDBlsJymNcX6tYVODPb8+IB5H/2ZqrVuzgafHLc=",
-        "owner": "zdharma",
-        "repo": "history-search-multi-word",
-        "rev": "9460dff3d2a7144d94025543be97044b69054aca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zdharma",
-        "ref": "v1.2.52",
-        "repo": "history-search-multi-word",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -83,7 +66,6 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "history-search-multi-word": "history-search-multi-word",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }

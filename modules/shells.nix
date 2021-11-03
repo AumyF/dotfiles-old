@@ -44,10 +44,6 @@
         src = pkgs.zsh-fast-syntax-highlighting.src;
       }
       {
-        name = "history-search-multi-word";
-        src = pkgs.history-search-multi-word.src;
-      }
-      {
         name = "zsh-completions";
         src = pkgs.zsh-completions.src;
       }

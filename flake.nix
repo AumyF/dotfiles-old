@@ -5,23 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
-    # history-search-multi-word = {
-    #   type = "github";
-    #   owner = "zdharma";
-    #   repo = "history-search-multi-word";
-    #   ref = "v1.2.52";
-    #   flake = false;
-    # };
   };
-  outputs = { self, home-manager, nixpkgs, flake-utils, history-search-multi-word, ... }:
+  outputs = { self, home-manager, nixpkgs, flake-utils, ... }:
     let
       overlays = [
         (
-          self: super: {
-            history-search-multi-word = super.callPackage ./packages/history-search-multi-word.nix {
-              src = history-search-multi-word;
-            };
-          }
+          self: super: { }
         )
       ];
     in
