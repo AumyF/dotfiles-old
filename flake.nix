@@ -34,6 +34,7 @@
                 nix-prefetch-github
                 nodejs-16_x
                 rnix-lsp
+                yarn
               ];
               programs.home-manager.enable = true;
               programs.git = {

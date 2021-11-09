@@ -22,7 +22,6 @@
       {
         list = "lsd -F -l --blocks permission,user,group,size,date,name --date \"+%F %T UTC%z\"";
         apt-bump = "sudo apt-get update && sudo apt-get upgrade -y";
-        yarn = "nix run nixpkgs.yarn -c yarn";
       };
     envExtra = ''
       if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
