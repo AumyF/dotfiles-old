@@ -32,6 +32,9 @@
           $fpath
         )
       fi
+
+      # Gitコミット署名のため
+      export GPG_TTY=$(tty)
     '';
     initExtra = ''
       lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z"

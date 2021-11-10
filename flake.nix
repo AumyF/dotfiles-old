@@ -30,6 +30,8 @@
                 cachix
                 gh
                 ghq
+                gnupg
+                keybase
                 niv
                 nix-prefetch-github
                 nodejs-16_x
@@ -40,7 +42,11 @@
               programs.git = {
                 enable = true;
                 userName = "Aumy";
-                userEmail = "46275902+AumyF@users.noreply.github.com";
+                userEmail = "aumy@outlook.jp";
+                signing = {
+                  key = "BEDC500020425D0FB4E3C8235911EC1BAD704C03";
+                  signByDefault = true;
+                };
               };
 
             };
