@@ -45,8 +45,8 @@
                 userName = "Aumy";
                 userEmail = "aumy@outlook.jp";
                 signing = {
-                  key = "BEDC500020425D0FB4E3C8235911EC1BAD704C03";
-                  signByDefault = true;
+                  key = "5911EC1BAD704C03";
+                  signByDefault = false;
                 };
               };
 
