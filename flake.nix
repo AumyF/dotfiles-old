@@ -33,6 +33,7 @@
                 gnupg
                 keybase
                 niv
+                nixpkgs-fmt
                 nix-prefetch-github
                 nodejs-16_x
                 rnix-lsp
