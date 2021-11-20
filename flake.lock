@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "nim-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1633628142,
+        "narHash": "sha256-WBBUZU88sU1rdUNYLe1AeUBk3UNJFcKT98Oiyg92R3A=",
+        "owner": "alaviss",
+        "repo": "nim.nvim",
+        "rev": "dbc853fedb963a97b1c5fbac54a05ba4f5100f06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alaviss",
+        "repo": "nim.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1636460418,
@@ -67,6 +83,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "nim-nvim": "nim-nvim",
         "nixpkgs": "nixpkgs_2"
       }
     }

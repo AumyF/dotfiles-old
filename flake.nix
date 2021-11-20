@@ -5,26 +5,30 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
+    nim-nvim = {
+      url = "github:alaviss/nim.nvim";
+      flake = false;
+    };
   };
-  outputs = { self, home-manager, nixpkgs, flake-utils, ... }:
-    let
-      overlays = [
-        (
-          self: super: { }
-        )
-      ];
-    in
+  outputs = { self, home-manager, nixpkgs, flake-utils, nim-nvim, ... }:
+
     {
       homeConfigurations =
         let
           wsl = username: home-manager.lib.homeManagerConfiguration {
             configuration = { pkgs, config, ... }: {
+
               nixpkgs = {
-                overlays = overlays;
+                overlays = let overlay-nim-nvim = final: prev: {
+                  vimPlugins = prev.vimPlugins // {
+                    nim-nvim = (prev.callPackage ./packages/nim-nvim.nix) { src = nim-nvim; };
+                  };
+                }; in [ overlay-nim-nvim ];
               };
               imports = [
                 ./modules/cli.nix
                 ./modules/shells.nix
+                ./modules/nvim.nix
               ];
               home.packages = with pkgs;[
                 cachix
