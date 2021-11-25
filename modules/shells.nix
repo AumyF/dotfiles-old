@@ -35,6 +35,9 @@
 
       # Gitコミット署名のため
       export GPG_TTY=$(tty)
+
+      # skim統合
+      source ${pkgs.skim}/share/skim/key-bindings.zsh
     '';
     initExtra = ''
       lsd -F -l --blocks permission,user,group,size,date,name --date "+%F %T UTC%z"
