@@ -1,3 +1,7 @@
+**Currently this dotfiles is not used by @AumyF and may not work on latest version of Nix or home-manager.** @AumyF now uses [AumyF/dotfiles](https://github.com/AumyF/dotfiles) written in Dhall.
+
+---
+
 # dotfiles
 
 ## Features
